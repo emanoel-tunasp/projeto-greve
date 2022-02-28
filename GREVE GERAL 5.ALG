@@ -12,7 +12,7 @@ Var
 
 
 
-FUNÇÃO PESQUISA(XV: INTEIRO) : LOGICO
+FUNÇÃO PESQUISA(XV: INTEIRO) : LOGICO //EXISTE//
 VAR II : INTEIRO
    A : LOGICO
 INICIO
@@ -20,7 +20,7 @@ INICIO
 
    A := FALSO
    PARA II DE 1 ATÉ 5 FAÇA
-      SE numero[ii] = xv ENTÃO
+      SE numero[II] = XV ENTÃO
          A := VERDADEIRO
          interrompa
       FIMSE
@@ -78,7 +78,7 @@ INICIO
    Escreval(" CONSULTA ")
 
    PARA II DE 1 ATÉ 5 FAÇA
-      ESCREVAL("[",II,"] -> ",NUMERO[II]," ",NOME[II]," ",IDADE[II])
+      ESCREVAL("[",II,"] -> ",NUMERO[II]," ",NOME[II]," ",IDADE[II])//TROCA  MENUS//
    FIMPARA
 
    ESCREVAL(" ")
@@ -93,24 +93,27 @@ VAR  II : INTEIRO
    xnum : INTEIRO
    xnom : caracter
    xidd : caracter
-
+   resultado:logico
 
 INICIO
    limpaTela
    Escreval(" EXCLUIR ")
    xnum := 0
-   L := FALSO
+   L := VERDADEIRO
    ENQUANTO L FAÇA
-      ESCREVA("DIGITE O NUMERO ",II," : ")
+      ESCREVA("DIGITE O NUMERO  : ")
       LEIA(xnum)
-      L := PESQUISA(xnum)
+      resultado := PESQUISA(xnum)
+      SE resultado = VERDADEIRO ENTAO   //senao ,erro//
+         L :=  FALSO
+         NOME[xnum] := ""
+         IDADE[xnum]:= ""
+         numero[xnum]:=0
+
+      fimse
    FIMENQUANTO
 
-   ESCREVAL("DIGITE o Nome : ",Nome[ii])
-   ESCREVAL("DIGITE a Idade: ",Idade[ii])
 
-   Nome[ii] := "  "
-   Idade[ii]:= "  "
 
    ESCREVAL(" ")
    ESCREVA("TECLE <ENTER> ")
