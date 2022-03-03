@@ -1,4 +1,4 @@
-Algoritmo "greve geral 6"
+Algoritmo "greve geral 7"
 
 Var
 
@@ -12,7 +12,7 @@ Var
 
 
 
-FUNCAO EXISTE(XV: INTEIRO) : LOGICO //EXISTE//
+FUNCAO EXISTE(XV: INTEIRO) : LOGICO
 Var II : INTEIRO
    A : LOGICO
 Inicio
@@ -109,7 +109,8 @@ Inicio
          nome[xnum] := ""
          idade[xnum]:= ""
          numero[xnum]:=0
-
+      SeNao
+         escreval("ESSA PESSOA NÃO EST NA LISTA TENTE NOVAMENTE")
       Fimse
    FimEnquanto
 
@@ -121,41 +122,41 @@ Inicio
 
 FimProcedimento
 
-
 Procedimento ALTERAR
-Var  II : INTEIRO
+Var
+   II : INTEIRO
    L  :  LOGICO
    xnum : INTEIRO
    xnom : caracter
    xidd : caracter
-
+   resultado:logico
 Inicio
    LimpaTela
    Escreval(" ALTERAÇÃO ")
    xnum := 0
-   Xnom := ""
-   xidd := ""
+
    L := VERDADEIRO
    Enquanto L Faca
-      Escreva("DIGITE O NUMERO : ")
+      Escreva("DIGITE O NUMERO: ")
       Leia(xnum)
-      L := EXISTE(xnum)
+      resultado := EXISTE(xnum)
+      se resultado = VERDADEIRO Entao
+         escreval("ESCREVA SEU NOME")
+         Leia(xnom)
+         escreval("ESCREVA SUA IDADE")
+         Leia(xidd)
+
+         nome[xnum] := xnom
+         idade[xnum]:= xidd
+
+         L:= FALSO
+      Senao
+         Escreval("ESSE NUMERO NÃO EXISTE NA LISTA.tente novamente")
+
+      Fimse
    FimEnquanto
-
-   Escreval("DIGITE o Nome : ",nome[ii])
-   Escreval("DIGITE a Idade: ",idade[ii])
-
-   Escreva("DIGITE o Nome : ")
-   LEIA(xnom)
-   Escreva("DIGITE a Idade: ")
-   LEIA(xidd)
-
-   numero[II] := xnum
-   nome[ii]   := xnom
-   idade[ii]  := xidd
-
    Escreval(" ")
-   Escreva("TECLE <ENTER> ")
+   Escreval("TECLE <ENTER>")
    Leia(enter)
 
 FimProcedimento
@@ -186,34 +187,34 @@ Inicio
       Escreval("-PARA PARTICIPAR PRECISAMOS QUE VOCÊ PREENCHA UMA FICHA COM INFORMAÇÕES QUE POSSAM AJUDAR -")
       Escreval("___________________________________________________________________________________________")
 
+   MUDACOR("Amarelo","FRENTE")
 
 
-
-      Escreval("MENU  DA GREVE GERAL")
-      Escreval("1-INCLUSÃO")
-      Escreval("2-CONSULTA")
-      Escreval("3-EXCLUSÃO")
-      Escreval("4-ALTERAÇÃO")
-      Escreval("5-FINALIZAR")
+   Escreval("MENU  DA GREVE GERAL")
+   Escreval("1-INCLUSÃO")
+   Escreval("2-CONSULTA")
+   Escreval("3-EXCLUSÃO")
+   Escreval("4-ALTERAÇÃO")
+   Escreval("5-FINALIZAR")
+   Escreval(" ")
+   Escreval("Digite a opção:")
+   Leia(opcao)
+   Escolha OPCAO Faca
+   Caso "1"
+      INCLUIR
+   Caso "2"
+      CONSULTAR
+   Caso "3"
+      EXCLUIR
+   Caso "4"
+      ALTERAR
+   Caso "5"
+      L := FALSO
+   Outrocaso
+      Escreval("OPÇÃO INVÁLIDA !!!")
       Escreval(" ")
-      Escreval("Digite a opção:")
-      Leia(opcao)
-      Escolha OPCAO Faca
-      Caso "1"
-         INCLUIR
-      Caso "2"
-         CONSULTAR
-      Caso "3"
-         EXCLUIR
-      Caso "4"
-         ALTERAR
-      Caso "5"
-         L := FALSO
-      Outrocaso
-         Escreval("OPÇÃO INVÁLIDA !!!")
-         Escreval(" ")
-         Escreval("TECLE <ENTER> ")
-         LEIA(XL)
-      FimEscolha
-   FimEnquanto
+      Escreval("TECLE <ENTER> ")
+      LEIA(enter)
+   FimEscolha
+FimEnquanto
 FimAlgoritmo
